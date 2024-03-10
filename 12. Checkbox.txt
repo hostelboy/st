@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>choose hobbies</h2>
+    <input type="checkbox" name="hobby" value="reading">reading<br>
+    <input type="checkbox" name="hobby" value="swimming">swimming<br>
+    <input type="checkbox" name="hobby" value="travelling">travelling<br>
+    <input type="checkbox" name="hobby" value="hiking">hiking<br>
+    <input type="checkbox" name="hobby" value="dancing">dancing<br>
+
+</body>
+</html>
+
+
+
+
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class checkbox {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d = new ChromeDriver();
+		d.get("C:\\checkbox.html");
+		d.manage().window().maximize();
+		Thread.sleep(3000);
+		d.findElement(By.xpath("/html/body/input[1]")).click();
+		d.findElement(By.xpath("/html/body/input[3]")).click();
+		Thread.sleep(3000);		
+		List<WebElement> cb = d.findElements(By.xpath("//input[@type='checkbox']"));
+		int cc = 0;
+		int uc = 0;
+		for (int i=0; i<cb.size(); i++) {
+			if(cb.get(i).isSelected()==true)
+				cc++;
+			else 
+				uc++;
+			}
+			System.out.println("number of checked checkboxes are "+cc);
+			System.out.println("number of unchecked checkboxes are "+uc);
+			
+			d.close();
+
+		
+		
+	}
+
+}

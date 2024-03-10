@@ -1,0 +1,18 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver; 
+
+public class ksrtc {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d = new ChromeDriver();
+		d.manage().window().maximize();
+		d.get("https://ksrtc.in/oprs-web/");
+		d.findElement(By.cssSelector("#toPlaceName")).click();
+		Thread.sleep(2000);
+		Alert a=d.switchTo().alert();
+		String m = d.switchTo().alert().getText();
+		System.out.println(m);
+		a.accept();
+		Thread.sleep(2000);
+		d.close();
+	}
+}

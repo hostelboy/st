@@ -1,0 +1,27 @@
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class numberOfObjects {
+	public static void main(String[] args) {
+		WebDriver d = new ChromeDriver();
+		d.manage().window().maximize(); 
+		 
+		d.get("https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html"); 
+		d.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
+		
+		List<WebElement> cb = d.findElements(By.xpath("//input[@type='checkbox']"));
+		System.out.println(cb.size()+" number of checkboxes");
+		
+		List<WebElement> dd = d.findElements(By.tagName("select"));
+		System.out.println(dd.size()+" number of dropdown menus are");
+		
+		List<WebElement> rb = d.findElements(By.xpath("//input[@type='radio']"));
+		System.out.println(rb.size()+" number of radio buttons");
+		
+		d.close();
+	}
+
+}

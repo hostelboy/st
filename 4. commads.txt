@@ -1,0 +1,18 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class commands{
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d = new ChromeDriver();
+		d.get("https://www.google.com/");
+		d.manage().window().maximize();
+		String title = d.getTitle(); 
+		System.out.println(title);
+		d.findElement(By.tagName("textarea")).sendKeys("Youtube");
+		d.findElement(By.tagName("textarea")).submit();
+		d.findElement(By.xpath("//h3[normalize-space()='YouTube: Home']")).click();
+		String url=d.getCurrentUrl(); 
+		System.out.println(url); 
+		Thread.sleep(2000);
+		d.close();
+	}
+}

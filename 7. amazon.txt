@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class amazon {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d = new ChromeDriver();
+		d.manage().window().maximize();
+		d.get("https://amazon.in");
+		d.manage().deleteAllCookies();
+		d.findElement(By.id("twotabsearchtextbox")).sendKeys("iphone 15");
+		d.findElement(By.id("twotabsearchtextbox")).submit();
+		
+		d.findElement(By.xpath("//div[contains(@class,'rush-component s-featured-result-item')]//span[@class='a-size-medium a-color-base a-text-normal'][normalize-space()='Apple iPhone 15 (128 GB) - Blue']")).click();
+		
+		ArrayList<String> w=new ArrayList<String>(d.getWindowHandles());
+		d.switchTo().window(w.get(1));
+		
+		d.findElement(By.xpath("//input[@id='buy-now-button']")).click();
+		Thread.sleep(2000);
+		
+		System.out.println("thank you");
+	}
+
+}

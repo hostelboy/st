@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>select programming language</label>
+    <select name="language" id="language">
+        <option value="javaScript">javaScript</option>
+        <option value="python">python</option>
+        <option value="c++">c++</option>
+        <option value="java">java</option>
+        <option value="ruby">ruby</option>
+    </select>
+</body>
+</html>
+
+
+
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class  listitems {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d = new ChromeDriver();
+		d.get("C:\\drop.html");
+		d.manage().window().maximize();
+		Select i = new Select(d.findElement(By.name("language")));
+		List<WebElement> l = i.getOptions();
+		System.out.println("number of items= "+l.size());
+		Thread.sleep(2000);
+		d.quit();
+	}
+}

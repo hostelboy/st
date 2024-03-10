@@ -1,0 +1,49 @@
+package dowhile;
+
+public class sumofnumbers {
+	public static void main(String[] args) {
+		int i = 1, sum = 0;
+		do {
+		sum += i;
+		i++;
+		} while (i <= 10);
+		System.out.println("The sum of numbers from 1 to 10 is: " + sum);
+		}
+		public static int calculateSum(int start, int end) {
+		int i = start, sum = 0;
+		do {
+		sum += i;
+		i++;
+		} while (i <= end);
+		return sum;
+		}
+}
+
+
+
+
+package dowhile;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class sumofnumberstest {
+	@Test
+	public void testPositiveValuesInRange() {
+	int expectedSum = 55;
+	int actualSum=sumofnumbers.calculateSum(1,10);
+	Assert.assertEquals(actualSum,expectedSum);
+	}
+	@Test
+	public void testNegativeValuesInRange() {
+	int expectedSum =0;
+	int actualSum=sumofnumbers.calculateSum(-10,10);
+	Assert.assertEquals(actualSum,expectedSum);
+	}
+	@Test
+	public void testOutOfRange() {
+	int expectedSum = 0;
+	int actualSum =sumofnumbers.calculateSum(11,20);
+	Assert.assertEquals(actualSum,expectedSum);
+	}
+	}
+
